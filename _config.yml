@@ -1,0 +1,83 @@
+
+title: "Tzu-Han Lin"
+name: "Tzu-Han Lin (林子瀚)"
+description: "Tzu-Han's personal website."
+url: "https://hank0316.github.io"
+baseurl: ""
+
+# Minimal Mistakes remote theme
+remote_theme: "mmistakes/minimal-mistakes"
+minimal_mistakes_skin: "default"  # alternatives: air, contrast, dark, dirt, neon, sunrise
+
+# Recommended GitHub Pages plugins
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+  - jekyll-include-cache
+
+# navigation data
+collections:
+  pages:
+    output: true
+    permalink: /:path/
+
+paginate: 5
+paginate_path: "/blog/page:num"
+
+author:
+  name: "Tzu-Han Lin"
+  avatar: "/assets/images/profile.jpg" # put your image here
+  bio: "MS Student at National Taiwan Uniiversity."
+  location: "Taipei, Taiwan"
+  links:
+    - label: "Email"
+      icon: "fas fa-fw fa-envelope"
+      url: "mailto:b08902126@csie.ntu.edu.tw"
+    - label: "Google Scholar"
+      icon: "ai ai-google-scholar"
+      url: "https://scholar.google.com/citations?user=GBkoKhAAAAAJ"
+    - label: "GitHub"
+      icon: "fab fa-fw fa-github"
+      url: "https://github.com/hank0316"
+    - label: "LinkedIn"
+      icon: "fab fa-fw fa-linkedin"
+      url: "www.linkedin.com/in/tzuhanlin0316"
+    - label: "Twitter"
+      icon: "fab fa-fw fa-twitter"
+      url: "https://x.com/tzuhan_0316"
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "single"
+      author_profile: true
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "single"
+      author_profile: true
+
+# Header navigation (from _data/navigation.yml)
+navigation:
+  header: # not used by the theme directly; we will load _data/navigation.yml instead
+    - title: "About"
+      url: /about/
+    - title: "Publications"
+      url: /publications/
+    - title: "Projects"
+      url: /projects/
+    - title: "Blog"
+      url: /blog/
+
+# Social share
+twitter:
+  username: "tzuhan_0316"
+
+# Build settings
+markdown: kramdown
+theme: null
