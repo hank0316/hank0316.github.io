@@ -1,28 +1,38 @@
 ---
 ---
 
-@inproceedings{lin2023utility,
-  title={On the utility of self-supervised models for prosody-related tasks},
-  author={Lin*, Guan-Ting and Feng*, Chi-Luen and Huang**, Wei-Ping and Tseng**, Yuan and Lin**, Tzu-Han and Li**, Chen-An and Lee, Hung-yi and Ward, Nigel G},
-  booktitle={2022 IEEE Spoken Language Technology Workshop (SLT)},
-  pages={1104--1111},
-  year={2023},
-  organization={IEEE},
-  abstract={Self-Supervised Learning (SSL) from speech data has produced models that have achieved remarkable performance in many tasks, and that are known to implicitly represent many aspects of information latently present in speech signals. However, relatively little is known about the suitability of such models for prosody-related tasks or the extent to which they encode prosodic information. We present a new evaluation framework, “SUPERB-prosody,” consisting of three prosody-related downstream tasks and two pseudo tasks. We find that 13 of the 15 SSL models outperformed the baseline on all the prosody-related tasks. We also show good performance on two pseudo tasks: prosody reconstruction and future prosody prediction. We further analyze the layerwise contributions of the SSL models. Overall we conclude that SSL speech models are highly effective for prosody-related tasks. We release our code at https://github.com/JSALT-2022-SSL/superb-prosody for the community to support further investigation of SSL models' utility for prosody.},
-  code={https://github.com/JSALT-2022-SSL/superb-prosody},
-  pdf={https://arxiv.org/pdf/2210.07185}
+@article{li2025silence,
+  title={When Silence Matters: The Impact of Irrelevant Audio on Text Reasoning in Large Audio-Language Models},
+  author={Li, Chen-An and Lin, Tzu-Han and Lee, Hung-yi},
+  journal={arXiv preprint arXiv:2510.00626},
+  year={2025},
+  abstract={Large audio-language models (LALMs) unify speech and text processing, but their robustness in noisy real-world settings remains underexplored. We investigate how irrelevant audio, such as silence, synthetic noise, and environmental sounds, affects text reasoning tasks where audio is unnecessary. Across three text-based benchmarks, we find that even non-informative audio reduces accuracy and increases prediction volatility; the severity of interference scales with longer durations, higher amplitudes, and elevated decoding temperatures. Silence, often assumed neutral, destabilizes outputs as strongly as synthetic noise. While larger models show greater resilience, vulnerabilities persist across all evaluated systems. We further test mitigation strategies and find that prompting shows limited effectiveness, whereas self-consistency improves stability at the cost of increased computation. Our results reveal cross-modal interference as a key robustness challenge and highlight the need for efficient fusion strategies that preserve reasoning performance in the presence of irrelevant inputs.},
+  code={https://github.com/lca0503/AudioInterference.},
+  pdf={https://arxiv.org/pdf/2510.00626}
 }
 
-@inproceedings{wu2022efficacy,
-  title={The efficacy of self-supervised speech models for audio representations},
-  author={Wu*, Tung-Yu and Hsu*, Tsu-Yuan and Li*, Chen-An and Lin*, Tzu-Han and Lee, Hung-yi},
-  booktitle={HEAR: Holistic Evaluation of Audio Representations},
-  pages={90--110},
-  year={2022},
-  organization={PMLR},
-  abstract={Self-supervised learning (SSL) speech models, which can serve as powerful upstream models to extract meaningful speech representations, have achieved unprecedented success in speech representation learning. However, their effectiveness on non-speech datasets is relatively less explored. In this work, we propose an ensemble framework, with a combination of ensemble techniques, to fuse SSL speech models' embeddings. Extensive experiments on speech and non-speech audio datasets are conducted to investigate the representation abilities of our ensemble method and its single constituent model. Ablation studies are carried out to evaluate the performances of different ensemble techniques, such as feature averaging and concatenation. All experiments are conducted during NeurIPS 2021 HEAR Challenge as a standard evaluation pipeline provided by competition officials. Results demonstrate SSL speech models' strong abilities on various non-speech tasks, while we also note that they fail to deal with fine-grained music tasks, such as pitch classification and note onset detection. In addition, feature ensemble is shown to have great potential on producing more holistic representations, as our proposed framework generally surpasses state-of-the-art SSL speech/audio models and has superior performance on various datasets compared with other teams in HEAR Challenge. Our code is available at https://github.com/tony10101105/HEAR-2021-NeurIPS-Challenge—NTU-GURA.},
-  code={https://github.com/tony10101105/HEAR-2021-NeurIPS-Challenge—NTU-GURA},
-  pdf={https://proceedings.mlr.press/v166/wu22a/wu22a.pdf}
+@inproceedings{li2025transferring,
+  title={Transferring Textual Preferences to Vision-language Understanding Through Model Merging},
+  author={Li, Chen-An and Lin, Tzu-Han and Chen, Yun-Nung and Lee, Hung-yi},
+  booktitle = "Proceedings of the 63rd Annual Meeting of the Association for Computational Linguistics (Volume 2: Short Papers)",
+  pages={923--943},
+  year={2025},
+  abstract = "Large vision-language models (LVLMs) perform outstandingly across various multimodal tasks. However, their ability to evaluate generated content remains limited, and training vision-language reward models (VLRMs) with preference data is computationally expensive. This paper explores a training-free alternative by merging text-based reward models (RMs) with LVLMs to create VLRMs. Our approach shows that integrating these models leads to improved performance over LVLMs' scoring and text-based RMs, offering an efficient method for incorporating textual preferences into LVLMs.",
+  code={https://github.com/lca0503/MergeToVLRM},
+  pdf={https://arxiv.org/pdf/2502.13487},
+  selected={true}
+}
+
+@inproceedings{lin2024dogerm,
+  title={DogeRM: Equipping Reward Models with Domain Knowledge through Model Merging},
+  author={Lin, Tzu-Han and Li, Chen-An and Lee, Hung-Yi and Chen, Yun-Nung},
+  booktitle={Proceedings of the 2024 Conference on Empirical Methods in Natural Language Processing},
+  pages={15506--15524},
+  year={2024},
+  abstract={Reinforcement learning from human feedback (RLHF) is a popular strategy for aligning large language models (LLMs) with desired behaviors. Reward modeling is a crucial step in RLHF. However, collecting paired preference data for training reward models is often costly and time-consuming, especially for domain-specific preferences requiring expert annotation. To address this challenge, we propose the **Do**main knowled**ge** merged **R**eward **M**odel (**DogeRM**), a novel framework that integrates domain-specific knowledge into a general reward model by model merging. The experiments demonstrate that DogeRM enhances performance across different benchmarks and provide a detailed analysis showcasing the effects of model merging, showing the great potential of facilitating model alignment."},
+  code={https://github.com/MiuLab/DogeRM},
+  pdf={https://arxiv.org/pdf/2407.01470},
+  selected={true}
 }
 
 @inproceedings{hsueh2024editing,
@@ -36,44 +46,38 @@
   pdf={https://arxiv.org/pdf/2406.01436}
 }
 
-@inproceedings{lin2024dogerm,
-  title={DogeRM: Equipping Reward Models with Domain Knowledge through Model Merging},
-  author={Lin, Tzu-Han and Li, Chen-An and Lee, Hung-Yi and Chen, Yun-Nung},
-  booktitle={Proceedings of the 2024 Conference on Empirical Methods in Natural Language Processing},
-  pages={15506--15524},
-  year={2024},
-  abstract={Reinforcement learning from human feedback (RLHF) is a popular strategy for aligning large language models (LLMs) with desired behaviors. Reward modeling is a crucial step in RLHF. However, collecting paired preference data for training reward models is often costly and time-consuming, especially for domain-specific preferences requiring expert annotation. To address this challenge, we propose the **Do**main knowled**ge** merged **R**eward **M**odel (**DogeRM**), a novel framework that integrates domain-specific knowledge into a general reward model by model merging. The experiments demonstrate that DogeRM enhances performance across different benchmarks and provide a detailed analysis showcasing the effects of model merging, showing the great potential of facilitating model alignment."},
-  code={https://github.com/MiuLab/DogeRM},
-  pdf={https://arxiv.org/pdf/2407.01470}
-}
-
-@article{li2025transferring,
-  title={Transferring textual preferences to vision-language understanding through model merging},
-  author={Li, Chen-An and Lin, Tzu-Han and Chen, Yun-Nung and Lee, Hung-yi},
-  booktitle = "Proceedings of the 63rd Annual Meeting of the Association for Computational Linguistics (Volume 2: Short Papers)",
-  year={2025},
-  abstract = "Large vision-language models (LVLMs) perform outstandingly across various multimodal tasks. However, their ability to evaluate generated content remains limited, and training vision-language reward models (VLRMs) with preference data is computationally expensive. This paper explores a training-free alternative by merging text-based reward models (RMs) with LVLMs to create VLRMs. Our approach shows that integrating these models leads to improved performance over LVLMs' scoring and text-based RMs, offering an efficient method for incorporating textual preferences into LVLMs.",
-  code={https://github.com/lca0503/MergeToVLRM},
-  pdf={https://arxiv.org/pdf/2502.13487}
-}
-
 @inproceedings{lin2024peft,
-  title={Peft for speech: Unveiling optimal placement, merging strategies, and ensemble techniques},
+  title={PEFT for Speech: Unveiling Optimal Placement, Merging Strategies, and Ensemble Techniques},
   author={Lin*, Tzu-Han and Wang*, How-Shing and Weng**, Hao-Yung and Peng**, Kuang-Chen and Chen, Zih-Ching and Lee, Hung-yi},
   booktitle={2024 IEEE International Conference on Acoustics, Speech, and Signal Processing Workshops (ICASSPW)},
   pages={705--709},
   year={2024},
   organization={IEEE},
   abstract={Parameter-Efficient Fine-Tuning (PEFT) is increasingly recognized as an effective method in speech processing. However, the optimal approach and the placement of PEFT methods remain inconclusive. Our study conducts extensive experiments to compare different PEFT methods and their layer-wise placement adapting Differentiable Architecture Search (DARTS). We also explore the use of ensemble learning to leverage diverse PEFT strategies. The results reveal that DARTS does not outperform the baseline approach, which involves inserting the same PEFT method into all layers of a Self-Supervised Learning (SSL) model. In contrast, an ensemble learning approach, particularly one employing majority voting, demonstrates superior performance. Our statistical evidence indicates that different PEFT methods learn in varied ways. This variation might explain why the synergistic integration of various PEFT methods through ensemble learning can harness their unique learning capabilities more effectively compared to individual layer-wise optimization.},
-  pdf={https://arxiv.org/pdf/2401.02122}
+  pdf={https://arxiv.org/pdf/2401.02122},
+  selected={true}
 }
 
-@article{li2025silence,
-  title={When Silence Matters: The Impact of Irrelevant Audio on Text Reasoning in Large Audio-Language Models},
-  author={Li, Chen-An and Lin, Tzu-Han and Lee, Hung-yi},
-  journal={arXiv preprint arXiv:2510.00626},
-  year={2025},
-  abstract={Large audio-language models (LALMs) unify speech and text processing, but their robustness in noisy real-world settings remains underexplored. We investigate how irrelevant audio, such as silence, synthetic noise, and environmental sounds, affects text reasoning tasks where audio is unnecessary. Across three text-based benchmarks, we find that even non-informative audio reduces accuracy and increases prediction volatility; the severity of interference scales with longer durations, higher amplitudes, and elevated decoding temperatures. Silence, often assumed neutral, destabilizes outputs as strongly as synthetic noise. While larger models show greater resilience, vulnerabilities persist across all evaluated systems. We further test mitigation strategies and find that prompting shows limited effectiveness, whereas self-consistency improves stability at the cost of increased computation. Our results reveal cross-modal interference as a key robustness challenge and highlight the need for efficient fusion strategies that preserve reasoning performance in the presence of irrelevant inputs.},
-  code={https://github.com/lca0503/AudioInterference.},
-  pdf={https://arxiv.org/pdf/2510.00626}
+@inproceedings{lin2023utility,
+  title={On the Utility of Self-supervised Models for Prosody-related Tasks},
+  author={Lin*, Guan-Ting and Feng*, Chi-Luen and Huang**, Wei-Ping and Tseng**, Yuan and Lin**, Tzu-Han and Li**, Chen-An and Lee, Hung-yi and Ward, Nigel G},
+  booktitle={2022 IEEE Spoken Language Technology Workshop (SLT)},
+  pages={1104--1111},
+  year={2023},
+  organization={IEEE},
+  abstract={Self-Supervised Learning (SSL) from speech data has produced models that have achieved remarkable performance in many tasks, and that are known to implicitly represent many aspects of information latently present in speech signals. However, relatively little is known about the suitability of such models for prosody-related tasks or the extent to which they encode prosodic information. We present a new evaluation framework, “SUPERB-prosody,” consisting of three prosody-related downstream tasks and two pseudo tasks. We find that 13 of the 15 SSL models outperformed the baseline on all the prosody-related tasks. We also show good performance on two pseudo tasks: prosody reconstruction and future prosody prediction. We further analyze the layerwise contributions of the SSL models. Overall we conclude that SSL speech models are highly effective for prosody-related tasks. We release our code at https://github.com/JSALT-2022-SSL/superb-prosody for the community to support further investigation of SSL models' utility for prosody.},
+  code={https://github.com/JSALT-2022-SSL/superb-prosody},
+  pdf={https://arxiv.org/pdf/2210.07185}
+}
+
+@inproceedings{wu2022efficacy,
+  title={The Efficacy of Self-supervised Speech Models for Audio Representations},
+  author={Wu*, Tung-Yu and Hsu*, Tsu-Yuan and Li*, Chen-An and Lin*, Tzu-Han and Lee, Hung-yi},
+  booktitle={HEAR: Holistic Evaluation of Audio Representations},
+  pages={90--110},
+  year={2022},
+  organization={PMLR},
+  abstract={Self-supervised learning (SSL) speech models, which can serve as powerful upstream models to extract meaningful speech representations, have achieved unprecedented success in speech representation learning. However, their effectiveness on non-speech datasets is relatively less explored. In this work, we propose an ensemble framework, with a combination of ensemble techniques, to fuse SSL speech models' embeddings. Extensive experiments on speech and non-speech audio datasets are conducted to investigate the representation abilities of our ensemble method and its single constituent model. Ablation studies are carried out to evaluate the performances of different ensemble techniques, such as feature averaging and concatenation. All experiments are conducted during NeurIPS 2021 HEAR Challenge as a standard evaluation pipeline provided by competition officials. Results demonstrate SSL speech models' strong abilities on various non-speech tasks, while we also note that they fail to deal with fine-grained music tasks, such as pitch classification and note onset detection. In addition, feature ensemble is shown to have great potential on producing more holistic representations, as our proposed framework generally surpasses state-of-the-art SSL speech/audio models and has superior performance on various datasets compared with other teams in HEAR Challenge. Our code is available at https://github.com/tony10101105/HEAR-2021-NeurIPS-Challenge—NTU-GURA.},
+  code={https://github.com/tony10101105/HEAR-2021-NeurIPS-Challenge—NTU-GURA},
+  pdf={https://proceedings.mlr.press/v166/wu22a/wu22a.pdf}
 }
