@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campbell Biology Ch.30 測驗 (1-75題)</title>
+    <style>
+        body { font-family: "Microsoft JhengHei", Arial, sans-serif; background-color: #f0f2f5; display: flex; flex-direction: column; align-items: center; margin: 0; padding: 20px; min-height: 100vh; }
+        .container { background: white; width: 100%; max-width: 800px; padding: 25px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); position: relative; }
+        .menu-btn { position: absolute; top: 20px; right: 20px; background: #007bff; color: white; border: none; padding: 8px 15px; border-radius: 6px; cursor: pointer; font-size: 0.9em; }
+        h2 { text-align: center; color: #333; margin-bottom: 10px; }
+        .question-box { margin: 20px 0; font-size: 1.15em; line-height: 1.6; color: #2c3e50; white-space: pre-wrap; }
+        .options { display: flex; flex-direction: column; gap: 12px; }
+        .option-btn { padding: 15px; border: 2px solid #e9ecef; background: white; border-radius: 8px; text-align: left; cursor: pointer; transition: 0.2s; font-size: 1em; color: #495057; }
+        .option-btn:hover:not(:disabled) { background-color: #f8f9fa; border-color: #dee2e6; }
+        .correct { background-color: #d4edda !important; border-color: #c3e6cb !important; color: #155724 !important; }
+        .wrong { background-color: #f8d7da !important; border-color: #f5c6cb !important; color: #721c24 !important; }
+        .feedback { margin-top: 20px; padding: 15px; border-radius: 8px; text-align: center; font-weight: bold; display: none; }
+        .nav-buttons { display: flex; justify-content: space-between; margin-top: 30px; }
+        .nav-btn { background: #6c757d; color: white; border: none; padding: 12px 25px; border-radius: 6px; cursor: pointer; font-size: 1em; }
+        .nav-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); justify-content: center; align-items: center; z-index: 1000; }
+        .modal-content { background: white; padding: 25px; border-radius: 12px; width: 90%; max-width: 600px; max-height: 80vh; overflow-y: auto; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(50px, 1fr)); gap: 10px; margin-top: 15px; }
+        .grid-btn { padding: 10px; background: #f8f9fa; border: 1px solid #ddd; border-radius: 6px; cursor: pointer; text-align: center; font-weight: bold; }
+        .grid-btn:hover { background-color: #e2e6ea; }
+        .grid-btn.active { background: #007bff; color: white; border-color: #007bff; }
+        .close-modal { background: #dc3545; color: white; border: none; padding: 8px 16px; border-radius: 6px; float: right; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <button class="menu-btn" onclick="openMenu()">☰ 選題</button>
+    <h2 id="q-title">第 1 題</h2>
+    <div class="question-box" id="q-text"></div>
+    <div class="options" id="options-container"></div>
+    <div class="feedback" id="feedback-msg"></div>
+    <div class="nav-buttons">
+        <button class="nav-btn" id="prev-btn" onclick="prevQuestion()">上一題</button>
+        <button class="nav-btn" id="next-btn" onclick="nextQuestion()">下一題</button>
+    </div>
+</div>
+
+<div class="modal" id="menu-modal">
+    <div class="modal-content">
+        <button class="close-modal" onclick="closeMenu()">關閉</button>
+        <h3 style="margin-top: 0;">跳轉至題號</h3>
+        <div class="grid" id="menu-grid"></div>
+    </div>
+</div>
+
+<script>
+    // 依據 Campbell Biology Test Bank, 11 edition C1S .pdf 提取的 1-75 題資料
+    const questions = [
+        {
+            question: "1) Which of the following is a major trend in land plant evolution?",
+            options: [
+                "A) the trend toward smaller size",
+                "B) the trend toward a gametophyte-dominated life cycle",
+                "C) the trend toward a sporophyte-dominated life cycle",
+                "D) the trend toward larger gametophytes"
+            ],
+            answer: 2
+        },
+        {
+            question: "2) Which of the following lines of evidence would best support your assertion that a particular plant is an angiosperm?",
+            options: [
+                "A) It produces seeds.",
+                "B) It retains its fertilized egg within its archegonium.",
+                "C) It lacks gametangia.",
+                "D) It undergoes alternation of generations."
+            ],
+            answer: 2
+        },
+        {
+            question: "3) Which of the following characteristics is functionally important in cells of the gametophytes of both angiosperms and gymnosperms?",
+            options: [
+                "A) diploid nuclei",
+                "B) mitochondria",
+                "C) endosperm",
+                "D) chloroplasts"
+            ],
+            answer: 1
+        },
+        {
+            question: "4) In addition to seeds, which of the following characteristics is unique to the seed-producing plants?",
+            options: [
+                "A) sporopollenin",
+                "B) lignin present in cell walls",
+                "C) pollen",
+                "D) megaphylls"
+            ],
+            answer: 2
+        },
+        {
+            question: "5) Suppose that the cells of seed plants, like the cells of human skin, produce a pigment upon increased exposure to ultraviolet radiation. Rank the following cells, from greatest to least, in terms of the likelihood of producing this pigment.",
+            options: [
+                "A) epidermal cells of sporophyte megaphylls, cells of a gametophyte, cells of a megasporangium, cells in the interior of a subterranean root",
+                "B) epidermal cells of sporophyte megaphylls, cells of a gametophyte, cells in the interior of a subterranean root, cells of a megasporangium",
+                "C) epidermal cells of sporophyte megaphylls, cells of a megasporangium, cells of a gametophyte, cells in the interior of a subterranean root",
+                "D) epidermal cells of sporophyte megaphylls, cells in the interior of a subterranean root, cells of a megasporangium, cells of a gametophyte"
+            ],
+            answer: 2
+        },
+        {
+            question: "6) Arrange the following in the correct sequence, from earliest to most recent, in which these plant traits originated.",
+            options: [
+                "A) sporophyte dominance, gametophyte independence; sporophyte dominance, gametophyte dependence; gametophyte dominance, sporophyte dependence",
+                "B) sporophyte dominance, gametophyte dependence; sporophyte dominance, gametophyte independence; gametophyte dominance, sporophyte dependence",
+                "C) gametophyte dominance, sporophyte dependence; sporophyte dominance, gametophyte dependence; sporophyte dominance, gametophyte independence",
+                "D) gametophyte dominance, sporophyte dependence; sporophyte dominance, gametophyte independence; sporophyte dominance, gametophyte dependence"
+            ],
+            answer: 3
+        },
+        {
+            question: "7) In seed plants, which of the following is part of a pollen grain and has a function most like that of the seed coat?",
+            options: [
+                "A) sporophyll",
+                "B) sporopollenin",
+                "C) stigma",
+                "D) sporangium"
+            ],
+            answer: 1
+        },
+        {
+            question: "8) In terms of alternation of generations, the internal parts of the pollen grains of seed-producing plants are most similar to a",
+            options: [
+                "A) moss sporophyte",
+                "B) moss gametophyte bearing both male and female gametangia",
+                "C) fern sporophyte",
+                "D) fern gametophyte bearing only antheridia"
+            ],
+            answer: 3
+        },
+        {
+            question: "9) A researcher has developed two stains for use with seed plants. One stains sporophyte tissue blue; the other stains gametophyte tissue red. If the researcher exposes pollen grains to both stains, and then rinses away the excess stain, what should occur?",
+            options: [
+                "A) The pollen grains will be pure red.",
+                "B) The pollen grains will be pure blue.",
+                "C) The pollen grains will have red interiors and blue exteriors.",
+                "D) The pollen grains will have blue interiors and red exteriors."
+            ],
+            answer: 2
+        },
+        {
+            question: "10) Which of the following sex and generation combinations directly produces the pollen tube of angiosperms?",
+            options: [
+                "A) male gametophyte",
+                "B) female gametophyte",
+                "C) male sporophyte",
+                "D) female sporophyte"
+            ],
+            answer: 0
+        },
+        {
+            question: "11) The advantages of the reduced gametophytes in seed plants include",
+            options: [
+                "A) protection from ultraviolet radiation, gain of nutrients from its own photosynthesis, and protection from drying out",
+                "B) protection from ultraviolet radiation, gain of nutrients from the sporophyte, and protection from drying out",
+                "C) protection of the spores from ultraviolet radiation and drying out, and gain of nutrients from the sporophyte",
+                "D) development of the seed"
+            ],
+            answer: 1
+        },
+        {
+            question: "12) The advantages of seeds, compared to spores, include",
+            options: [
+                "A) using wind as a dispersal agent",
+                "B) containing a nutrient store for a developing sporophyte",
+                "C) relying on animals for pollination",
+                "D) providing nutrition for animals"
+            ],
+            answer: 1
+        },
+        {
+            question: "13) Unlike almost all ferns, seed plants",
+            options: [
+                "A) produce two kinds of spores",
+                "B) have large gametophytes",
+                "C) have vascular tissue",
+                "D) can photosynthesize"
+            ],
+            answer: 0
+        },
+        {
+            question: "14) One day, you go outside and see that the cars on the street are covered in a yellow \"dust.\" Which of the following statements can be correctly applied to this \"dust\"?",
+            options: [
+                "A) The dust is pine pollen and is so abundant because the pines are wind-pollinated.",
+                "B) The dust is the spore production of ferns and is so abundant because the spores are wind-dispersed.",
+                "C) The dust is the seed production of ferns and is so abundant because the seeds are tiny and take very little energy to produce.",
+                "D) The dust is the seed production of pines and is so abundant because the seeds are tiny and take very little energy to produce."
+            ],
+            answer: 0
+        },
+        {
+            question: "15) The closest relatives of the familiar pine and spruce trees are",
+            options: [
+                "A) ferns, horsetails, lycophytes, and club mosses",
+                "B) hornworts, liverworts, and mosses",
+                "C) gnetophytes, cycads, and ginkgos",
+                "D) elms, maples, and aspens"
+            ],
+            answer: 2
+        },
+        {
+            question: "16) Spruces and pines both have needlelike leaves, with the adaptive advantage of",
+            options: [
+                "A) increased surface area, increasing photosynthesis",
+                "B) increased surface area, increasing gas exchange",
+                "C) decreased surface area, reducing gas exchange",
+                "D) decreased surface area, reducing water loss"
+            ],
+            answer: 3
+        },
+        {
+            question: "17) Which of the following statements correctly describes a portion of the pine life cycle?",
+            options: [
+                "A) Female gametophytes use mitosis to produce eggs.",
+                "B) Seeds are produced in pollen-producing cones.",
+                "C) Pollen grains contain female gametophytes.",
+                "D) A pollen tube slowly digests its way through the triploid endosperm."
+            ],
+            answer: 0
+        },
+        {
+            question: "18) Which of the following statements about the pine life cycle is accurate?",
+            options: [
+                "A) The pine tree is a gametophyte.",
+                "B) Male and female gametophytes are in close proximity during gamete synthesis.",
+                "C) Double fertilization is a relatively common phenomenon.",
+                "D) Conifer pollen grains contain male gametophytes."
+            ],
+            answer: 3
+        },
+        {
+            question: "19) Within a gymnosperm megasporangium, which of the following developmental sequences is correct, assuming fertilization occurs?",
+            options: [
+                "A) megaspore, female gametophyte, egg cell, sporophyte embryo",
+                "B) megaspore, sporophyte embryo, female gametophyte, egg cell",
+                "C) sporophyte embryo, megaspore, egg cell, female gametophyte",
+                "D) sporophyte embryo, megaspore, female gametophyte, egg cell"
+            ],
+            answer: 0
+        },
+        {
+            question: "20) Arrange the following structures, which can be found on male pine trees, from the largest structure to the smallest structure (or from most inclusive to least inclusive).",
+            options: [
+                "A) sporophyte, pollen cone, microsporangia, microspores, pollen nuclei",
+                "B) sporophyte, microspores, microsporangia, pollen nuclei, pollen cone",
+                "C) pollen cone, sporophyte, microspores, microsporangia, pollen nuclei",
+                "D) pollen cone, microsporangia, microspores, pollen nuclei, sporophyte"
+            ],
+            answer: 0
+        },
+        {
+            question: "21) Which of the following sex and generation combinations most directly produces the integument of a pine seed?",
+            options: [
+                "A) male gametophyte",
+                "B) female gametophyte",
+                "C) male sporophyte",
+                "D) female sporophyte"
+            ],
+            answer: 3
+        },
+        {
+            question: "22) Which of the following sex and generation combinations directly produces the megasporangium of pine ovules?",
+            options: [
+                "A) male gametophyte",
+                "B) female gametophyte",
+                "C) male sporophyte",
+                "D) female sporophyte"
+            ],
+            answer: 3
+        },
+        {
+            question: "23) Use the information to answer the following question.\nThe cycads, a mostly tropical phylum of gymnosperms, evolved about 300 million years ago and were dominant forms during the age of the dinosaurs. Though their sperm are flagellated, their ovules are pollinated by beetles. These beetles get nutrition from the pollen and shelter from the microsporophylls. Upon visiting megasporophylls, the beetles transfer pollen to the exposed ovules. In cycads, pollen cones and seed cones are borne on different plants. Cycads synthesize neurotoxins, especially in the seeds, that are effective against most animals, including humans.\n\nWhich feature of cycads distinguishes them from most other gymnosperms?",
+            options: [
+                "A) They have exposed ovules.",
+                "B) They have flagellated sperm.",
+                "C) They are pollinated by animals.",
+                "D) They have flagellated sperm and they are pollinated by animals."
+            ],
+            answer: 3
+        },
+        {
+            question: "24) Use the information to answer the following question.\nThe cycads... (context same as above) ... On the Pacific island of Guam, large herbivorous bats called \"flying foxes\" commonly feed on cycad seeds, a potent source of neurotoxins. The flying foxes do not visit male cones.\n\nConsequently, which of the following statements should be accurate?",
+            options: [
+                "A) Flying foxes are attracted to cycad fruit and eat the enclosed seeds only by accident.",
+                "B) Flying foxes are highly susceptible to the effects of the neurotoxins because the toxin attacks the action of the central nervous system.",
+                "C) Flying foxes assist the beetles as important pollinating agents of the cycads.",
+                "D) Flying foxes disperse cycad seeds if the seeds sometimes get swallowed whole (in other words, without getting chewed)."
+            ],
+            answer: 3
+        },
+        {
+            question: "25) Use the information to answer the following question.\nThe cycads... (context same as above). The flying foxes do not visit male cones. Which of the following proposed studies would be worth investigating next?",
+            options: [
+                "A) investigating the effects of the neurotoxins on the beetles",
+                "B) investigating the mechanism of action of the neurotoxin on the bats",
+                "C) investigating the mechanism of action of the neurotoxin on the beetles",
+                "D) measuring the effect of the neurotoxin on a nectar-feeding bat"
+            ],
+            answer: 0
+        },
+        {
+            question: "26) Use the information to answer the following question.\nThe Brazil nut tree, Bertholletia excels (n=17) is native to tropical rain forests of South America... Scientists have discovered that the pale yellow flowers of Brazil nut trees cannot fertilize themselves and admit only female orchid bees as pollinators... Orchid bees are to Brazil nut trees as",
+            options: [
+                "A) breezes",
+                "B) rain droplets",
+                "C) seed-eating birds",
+                "D) squirrels"
+            ],
+            answer: 0
+        },
+        {
+            question: "27) Use the information to answer the following question.\n(Brazil nut tree context)... The large white part of a Brazil nut that people eat serves which of the following functions in nature?",
+            options: [
+                "A) It attracts harpy eagles and encourages them to nest in the tree.",
+                "B) It provides energy and nutrition to a germinating seedling.",
+                "C) It serves as protection for the embryo from agoutis looking for food.",
+                "D) It provides a water source for the developing embryo."
+            ],
+            answer: 1
+        },
+        {
+            question: "28) Use the information to answer the following question.\n(Brazil nut tree context)... Predict the most likely outcome to the population of Brazil nut trees if a disease decimated the agouti population.",
+            options: [
+                "A) The population of large Brazil nut trees would remain constant for a while, but the population of new seedlings would likely increase in the long run.",
+                "B) The population of large Brazil nut trees would decline immediately, and the population of new seedlings would likely decrease in the future.",
+                "C) The population of large Brazil nut trees would remain constant for a while, but the population of new seedlings would likely decrease in the long run.",
+                "D) Both the population of large Brazil nut trees and new seedlings would increase in the long run."
+            ],
+            answer: 2
+        },
+        {
+            question: "29) Many mammals have skins and mucous membranes that are sensitive to phenolic secretions of plants like poison oak (Rhus). These secondary compounds are primarily adaptations that",
+            options: [
+                "A) favor pollination",
+                "B) foster seed dispersal",
+                "C) decrease competition",
+                "D) inhibit herbivory"
+            ],
+            answer: 3
+        },
+        {
+            question: "30) Use the information to answer the following question.\n(Brazil nut tree context)... Entrepreneurs attempted, but failed, to harvest nuts from plantations grown in Southeast Asia. Attempts to grow Brazil nut trees in South American plantations also failed. In both cases, the trees grew vigorously, produced healthy flowers in profusion, but set no fruit. Consequently, what is the likely source of the problem?",
+            options: [
+                "A) poor sporophyte viability",
+                "B) failure to produce fertile ovules",
+                "C) failure to produce pollen",
+                "D) pollination failure"
+            ],
+            answer: 3
+        },
+        {
+            question: "31) Use the information to answer the following question.\n(Brazil nut tree context)... The agouti is most directly involved with the Brazil nut tree's dispersal of",
+            options: [
+                "A) female gametophytes",
+                "B) sporophyte embryos",
+                "C) sporophyte megaspores",
+                "D) female gametes"
+            ],
+            answer: 1
+        },
+        {
+            question: "32) Use the information to answer the following question.\nScarlet gilia (Ipomopsis aggregata)... When hummingbirds were present, more red flowers than white flowers produced fruit. When only hawk moths were present, more white flowers produced fruit... What is the significance of measuring fruit production?",
+            options: [
+                "A) It is a measure of pollination success.",
+                "B) It is a measure of seed dispersal success.",
+                "C) It is easier than counting flowers.",
+                "D) It is an indication of predation on the seeds of the plants."
+            ],
+            answer: 0
+        },
+        {
+            question: "33) Use the information to answer the following question.\nScarlet gilia (Ipomopsis aggregata)... Late in the season, when only hawk moths were present, researchers painted the red flowers white. What would you expect?",
+            options: [
+                "A) Unpainted red flowers would produce more fruits than white flowers would.",
+                "B) Red flowers painted white would produce more fruits than red flowers would.",
+                "C) Red and white flowers would produce the same numbers of fruits.",
+                "D) Unpainted red flowers would produce the same number of fruits as the white flowers."
+            ],
+            answer: 1
+        },
+        {
+            question: "34) Use the information to answer the following question.\nScarlet gilia (Ipomopsis aggregata)... Some plants continued to produce only dark (red) flowers whereas others produced lighter colored flowers later in the season. Which plants do you expect produced more fruit over the entire season?",
+            options: [
+                "A) those that changed their color to a lighter shade",
+                "B) those that stayed dark",
+                "C) the same numbers of fruit on both",
+                "D) the plants whose flowers were always light colored"
+            ],
+            answer: 0
+        },
+        {
+            question: "35) Use the information to answer the following question.\nScarlet gilia (Ipomopsis aggregata)... Which of the following proposed controls would be most appropriate for the experiment when, late in the season, scientists painted some of the red flowers white?",
+            options: [
+                "A) Some red flowers should be painted pink",
+                "B) Some red and light colored flowers should be covered to prevent pollinator access.",
+                "C) Plants with light and dark colored flowers should be fertilized.",
+                "D) A necessary control would be to put red paint on some of the red flowers in order to control for the effects of paint."
+            ],
+            answer: 3
+        },
+        {
+            question: "36) Immature seed cones of conifers are usually green before pollination, and flowers of grasses are inconspicuously colored. What does this indicate about their pollination?",
+            options: [
+                "A) They probably self-fertilize and do not need pollen carried from one plant to another.",
+                "B) Their pollinating insects are probably color blind.",
+                "C) They are probably wind pollinated.",
+                "D) They probably attract pollinators using strong fragrances."
+            ],
+            answer: 2
+        },
+        {
+            question: "37) In onions (Allium), cells of the sporophyte have 16 chromosomes within each nucleus. Match the number of chromosomes... How many chromosomes should be in a tube cell nucleus?",
+            options: [
+                "A) 8",
+                "B) 16",
+                "C) 24",
+                "D) 32"
+            ],
+            answer: 0
+        },
+        {
+            question: "38) In onions (Allium)... How many chromosomes should be in an endosperm nucleus?",
+            options: [
+                "A) 8",
+                "B) 16",
+                "C) 24",
+                "D) 32"
+            ],
+            answer: 2
+        },
+        {
+            question: "39) In onions (Allium)... How many chromosomes should be in a generative cell nucleus?",
+            options: [
+                "A) 8",
+                "B) 16",
+                "C) 24",
+                "D) 32"
+            ],
+            answer: 0
+        },
+        {
+            question: "40) In onions (Allium)... How many chromosomes should be in the nucleus of an egg within the embryo sac prior to fertilization?",
+            options: [
+                "A) 8",
+                "B) 16",
+                "C) 24",
+                "D) 32"
+            ],
+            answer: 0
+        },
+        {
+            question: "41) In onions (Allium)... How many chromosomes should be in an embryo nucleus after fertilization?",
+            options: [
+                "A) 8",
+                "B) 16",
+                "C) 24",
+                "D) 32"
+            ],
+            answer: 1
+        },
+        {
+            question: "42) In onions (Allium)... How many chromosomes should be in a megasporangium nucleus?",
+            options: [
+                "A) 8",
+                "B) 16",
+                "C) 24",
+                "D) 32"
+            ],
+            answer: 1
+        },
+        {
+            question: "43) Use the information to answer the following question.\n(Brazil nut tree context)... Animals that consume Brazil nuts derive nutrition mostly from tissue whose nuclei have how many chromosomes?",
+            options: [
+                "A) 17",
+                "B) 34",
+                "C) 51",
+                "D) 68"
+            ],
+            answer: 2
+        },
+        {
+            question: "44) Which of the following sex and generation combinations directly produces the fruit of angiosperms?",
+            options: [
+                "A) male gametophyte",
+                "B) female gametophyte",
+                "C) male sporophyte",
+                "D) female sporophyte"
+            ],
+            answer: 3
+        },
+        {
+            question: "45) Which of the following is a characteristic of all angiosperms?",
+            options: [
+                "A) double internal fertilization",
+                "B) free-living gametophytes",
+                "C) carpels that contain microsporangia",
+                "D) ovules that are not contained within ovaries"
+            ],
+            answer: 0
+        },
+        {
+            question: "46) What adaptations should one expect of the seed coats of angiosperm species whose seeds are dispersed by frugivorous (fruit-eating) animals, as opposed to angiosperm species whose seeds are dispersed by other means?",
+            options: [
+                "A) The seed coat, upon its complete digestion, should provide vitamins or nutrients to animals.",
+                "B) The exterior of the seed coat should have barbs or hooks, and the seed coat should contain secondary compounds that irritate the lining of the animal's mouth.",
+                "C) The seed coat should contain secondary compounds that irritate the lining of the animal's mouth, and the seed coat should be able to withstand high acidity.",
+                "D) The seed coat should be able to withstand high acidity, and the seed coat should be resistant to the animal's digestive enzymes."
+            ],
+            answer: 3
+        },
+        {
+            question: "47) The generative cell of male angiosperm gametophytes is haploid. This cell divides to produce two haploid sperm cells. What type of cell division does the generative cell undergo to produce these sperm cells?",
+            options: [
+                "A) binary fission",
+                "B) mitosis",
+                "C) meiosis",
+                "D) meiosis without subsequent cytokinesis"
+            ],
+            answer: 1
+        },
+        {
+            question: "48) Among plants known as legumes... Upon opening such pods, it is commonly observed that some ovules have become mature seeds, whereas other ovules have not. Thus, which of the following statements is/are likely accurate?",
+            options: [
+                "A) The flowers that gave rise to such pods were not pollinated, and fruit can develop even if all ovules within have not been fertilized.",
+                "B) Pollen tubes did not enter all of the ovules in such pods, and the ovules that failed to develop into seeds were derived from sterile floral parts.",
+                "C) Pollen tubes did not enter all of the ovules in such pods, and fruit can develop even if all ovules within have not been fertilized.",
+                "D) There was apparently not enough endosperm to distribute to all of the ovules in such pods, and fruit can develop even if all ovules within have not been fertilized."
+            ],
+            answer: 2
+        },
+        {
+            question: "49) Arrange the following structures from largest to smallest, assuming that they belong to two generations of the same angiosperm.",
+            options: [
+                "A) carpel, embryo sac, ovule, ovary, egg",
+                "B) embryo sac, carpel, egg, ovary, ovule",
+                "C) embryo sac, ovary, carpel, ovule, egg",
+                "D) carpel, ovary, ovule, embryo sac, egg"
+            ],
+            answer: 3
+        },
+        {
+            question: "50) Mistletoe is a plant that lives on trees... What should be expected of the fruit if the viscosity of Viscum seeds is primarily an adaptation for dispersal rather than an adaptation for infecting host plant tissues?",
+            options: [
+                "A) is drab in color",
+                "B) is colored so as to provide it with camouflage",
+                "C) is nutritious to the dispersing organisms",
+                "D) secretes enzymes that can digest bark"
+            ],
+            answer: 2
+        },
+        {
+            question: "51) Use the information to answer the following question.\n(Cycads context)... Which feature of cycads makes them similar to many angiosperms?",
+            options: [
+                "A) They have exposed ovules.",
+                "B) They have flagellated sperm.",
+                "C) They are pollinated by animals.",
+                "D) They have flagellated sperm, and they are pollinated by animals."
+            ],
+            answer: 2
+        },
+        {
+            question: "52) Use the information to answer the following question.\n(Cycads context)... If the beetles survive by consuming cycad pollen, then whether the beetles should be considered mutualists with, or parasites of, the cycads depends upon the",
+            options: [
+                "A) extent to which their overall activities affect cycad reproduction",
+                "B) extent to which the beetles are affected by the neurotoxins",
+                "C) extent to which the beetles damage the cycad flowers",
+                "D) distance the beetles must travel between cycad microsporophylls and cycad megasporophylls"
+            ],
+            answer: 0
+        },
+        {
+            question: "53) If one were to propose a new taxon of plants that included all the plants that are pollinated by animals, but excluded all plants that are not pollinated by animals, then this new taxon would be",
+            options: [
+                "A) monophyletic",
+                "B) paraphyletic",
+                "C) polyphyletic",
+                "D) identical in composition to the phylum Anthophyta"
+            ],
+            answer: 2
+        },
+        {
+            question: "54) Use the information to answer the following question.\nOviparous (egg-laying) animals have internal fertilization... The yolk of an animal egg has what type of analog in angiosperms?",
+            options: [
+                "A) endosperm",
+                "B) carpels",
+                "C) fruit",
+                "D) seed coat"
+            ],
+            answer: 0
+        },
+        {
+            question: "55) Use the information to answer the following question.\nOviparous (egg-laying) animals... The shell of a fertilized animal egg has what type of analog in angiosperms?",
+            options: [
+                "A) endosperm",
+                "B) carpels",
+                "C) fruit",
+                "D) seed coat"
+            ],
+            answer: 3
+        },
+        {
+            question: "56) Use the information to answer the following question.\nOviparous (egg-laying) animals... The internal fertilization that occurs prior to shell deposition has what type of analog in angiosperms?",
+            options: [
+                "A) endosperm proliferation",
+                "B) growth of pollen tube and delivery of sperm nuclei",
+                "C) fusion of carpels into a fruit",
+                "D) seed coat hardening"
+            ],
+            answer: 1
+        },
+        {
+            question: "57) Use the information to answer the following question.\nOviparous (egg-laying) animals... The laying of eggs has what type of analog in angiosperms?",
+            options: [
+                "A) endosperm breakdown",
+                "B) fusion of carpels into a fruit",
+                "C) fruit dispersal",
+                "D) seed coat hardening"
+            ],
+            answer: 2
+        },
+        {
+            question: "58) Use the information to answer the following question.\n(Brazil nut tree context)... If a female orchid bee has just left a Brazil nut tree with nectar in her stomach, and if she visits another flower on a different Brazil nut tree, what is the sequence in which the following events should occur?",
+            options: [
+                "A) pollination, pollen tube emerges from pollen grain, pollen tube enters micropyle, double fertilization",
+                "B) pollination, pollen tube enters micropyle, pollen tube emerges from pollen grain, double fertilization",
+                "C) pollen tube emerges from pollen grain, pollination, pollen tube enters micropyle, double fertilization",
+                "D) pollen tube enters micropyle, pollen tube emerges from pollen grain, pollination, double fertilization"
+            ],
+            answer: 0
+        },
+        {
+            question: "59) Stamens, sepals, petals, carpels, and pinecone scales are all",
+            options: [
+                "A) female reproductive parts",
+                "B) capable of photosynthesis",
+                "C) modified leaves",
+                "D) found on flowers"
+            ],
+            answer: 2
+        },
+        {
+            question: "60) Compared to animal-pollinated plants, wind-pollinated angiosperms",
+            options: [
+                "A) produce fewer seeds because winds disperse seeds in a targeted manner",
+                "B) produce more seeds because winds disperse seeds greater distances",
+                "C) produce much less pollen because winds disperse pollen in a highly targeted manner",
+                "D) produce much more pollen because winds disperse pollen randomly"
+            ],
+            answer: 3
+        },
+        {
+            question: "61) Archaefructus, an early fossil angiosperm, was herbaceous and probably aquatic. Other seed plant fossils were woody and terrestrial. What should scientists conclude?",
+            options: [
+                "A) The earliest angiosperms were herbaceous and aquatic.",
+                "B) The earliest angiosperms were woody and terrestrial.",
+                "C) Other data must be considered in order to make a valid conclusion.",
+                "D) We cannot know the real history of angiosperms."
+            ],
+            answer: 2
+        },
+        {
+            question: "62) Imagine that you wanted to know if speciation is more rapid in plant groups pollinated by bees or hummingbirds... There were substantially more species in the groups that were pollinated by bees. What conclusions can you draw from your data?",
+            options: [
+                "A) Hummingbirds promoted speciation more than did bees.",
+                "B) Hummingbirds promoted speciation less than did bees.",
+                "C) Each genus should be split into two new genera.",
+                "D) The rates of speciation were similar in groups pollinated by hummingbirds and bees."
+            ],
+            answer: 1
+        },
+        {
+            question: "63) Use the information to answer the following question.\n(Brazil nut tree context)... The harpy eagle, Harpia harpyja... is a \"sloth specialist,\" but will also take agouti. Thus, if these eagles capture too many agoutis from a particular locale, they might contribute to their own demise by",
+            options: [
+                "A) having too many offspring",
+                "B) decreasing their habitat",
+                "C) decreasing atmospheric carbon dioxide",
+                "D) increasing the number of sloths"
+            ],
+            answer: 1
+        },
+        {
+            question: "64) Use the information to answer the following question.\n(Brazil nut tree context)... Native peoples traditionally use Brazil nuts to treat stomachache, inflammation, hypersensitivity, and hepatitis. Consequently, a scientist should be interested in promoting",
+            options: [
+                "A) better education for the native peoples so that they will overcome their old ways",
+                "B) clear-cutting forests containing Brazil nut trees to make way for crops with proven medical benefits",
+                "C) an increase in the living standards of the native peoples so that they might be able to purchase modern pharmaceuticals",
+                "D) the evaluation of Brazil nut chemicals for use as potential drugs"
+            ],
+            answer: 3
+        },
+        {
+            question: "65) Use the information to answer the following question.\n(Brazil nut tree context)... People who attempted to plant Brazil nuts in hopes of establishing plantations of Brazil nut trees played roles most similar to those of",
+            options: [
+                "A) agoutis",
+                "B) orchid bees",
+                "C) pollen tubes",
+                "D) harpy eagles"
+            ],
+            answer: 0
+        },
+        {
+            question: "66) Use the information to answer the following question.\n(Brazil nut tree context)... The same bees that pollinate the flowers of the Brazil nut trees also pollinate orchids... however, orchids cannot grow on Brazil nut trees. These observations explain",
+            options: [
+                "A) the coevolution of Brazil nut trees and orchids",
+                "B) why Brazil nut trees do not set fruit in monoculture (all one species) plantations",
+                "C) why male orchid bees do not pollinate Brazil nut tree flowers",
+                "D) why male orchid bees are smaller than female orchid bees"
+            ],
+            answer: 1
+        },
+        {
+            question: "67) Use the information to answer the following question.\n(Brazil nut tree context)... The taller a Brazil nut tree is,",
+            options: [
+                "A) the more valuable it is as a source of lumber",
+                "B) the more valuable it is as a source of lumber, and the less useful it is to harpy eagles",
+                "C) the more valuable it is as a source of lumber, and the greater its photosynthetic production is relative to neighboring plants",
+                "D) the less useful it is to harpy eagles, and the greater its photosynthetic production is relative to neighboring plants"
+            ],
+            answer: 2
+        },
+        {
+            question: "68) Use the information to answer the following question.\n(Brazil nut tree context)... Which of the following models best illustrates the direct relationships of the Brazil nut tree and the other organisms associated with it?",
+            options: [
+                "A) Orchid -> Orchid bee -> Brazil nut tree -> Agouti -> Harpy eagle",
+                "B) (Various arrows)",
+                "C) (Various arrows)",
+                "D) Orchid -> Orchid bee -> Brazil nut tree; Brazil nut tree -> Agouti; Agouti <-> Harpy eagle; Brazil nut tree -> Harpy eagle (+ interactions)"
+            ],
+            answer: 3
+        },
+        {
+            question: "69) Use the information to answer the following question.\n(Brazil nut tree context)... Capuchin monkeys have been known to use rocks to smash open the fruits of Brazil nut trees... the monkeys consume all of the Brazil nuts. Thus, which of the following correctly depicts the direct relationship between capuchin monkeys and Brazil nut trees?",
+            options: [
+                "A) Capuchin monkeys (arrow head to) Brazil nut trees (-)",
+                "B) Brazil nut trees (arrow head to) Capuchin monkeys",
+                "C) Capuchin monkeys <-> Brazil nut trees",
+                "D) None of the above"
+            ],
+            answer: 0
+        },
+        {
+            question: "70) Robbie and Saurab are pre-med and pre-pharmacy students... They complain to their biology professor that they should not have to study plants... Which adaptations of land plants are likely to cause human health problems and provide Robbie with future patients?",
+            options: [
+                "A) sporophyte dominance and defenses against herbivory",
+                "B) defenses against herbivory and adaptations related to wind dispersal of pollen",
+                "C) sporophyte dominance and adaptations related to wind dispersal of pollen",
+                "D) sporophyte dominance, defenses against herbivory, and adaptations related to wind dispersal of pollen"
+            ],
+            answer: 1
+        },
+        {
+            question: "71) Robbie and Saurab are pre-med and pre-pharmacy students... Which of the following statements are correct with regard to what physicians and pharmacists need to know about plants?",
+            options: [
+                "A) Land plants produce poisons and medicines.",
+                "B) Crop plants can often interbreed with their wild relatives.",
+                "C) Crop plants often produce more seeds than their wild relatives.",
+                "D) Land plants often provide food for pollinators."
+            ],
+            answer: 0
+        },
+        {
+            question: "72) Which of the following problems will likely increase if the human population continues to increase?",
+            options: [
+                "A) reduction in available medicines",
+                "B) decrease in global temperature",
+                "C) increase in disease-causing organisms",
+                "D) reduction in plant and animal diversity"
+            ],
+            answer: 3
+        },
+        {
+            question: "73) Use the information to answer the following question.\nTheobroma cacao (cacao) is the tree that produces seeds that are turned into chocolate... Which of the following strategies would be most useful in the long term in reducing pressures faced by cacao farmers?",
+            options: [
+                "A) Plant more trees in the temperate zone.",
+                "B) Crossbreed cacao strains that produce high-quality cacao beans and ones resistant to a disease.",
+                "C) Plant trees farther apart so that disease transmission rates from one tree to the next will be lower.",
+                "D) Fertilize the trees in closely spaced areas and add fungicides and pesticides to eliminate pests."
+            ],
+            answer: 1
+        },
+        {
+            question: "74) Use the information to answer the following question.\nTheobroma cacao (cacao)... Currently, cacao is harvested by cutting the cacao pods off trees with machetes. Which of the following strategies would increase the ease of harvesting?",
+            options: [
+                "A) Breed trees that are shorter.",
+                "B) Breed trees that produce fruits that attach more strongly to the tree.",
+                "C) Breed trees resistant to diseases and pests.",
+                "D) Provide fertilizer in small quantities."
+            ],
+            answer: 0
+        },
+        {
+            question: "75) Use the information to answer the following question.\nAçai berries... A recent study compared the forest characteristics of unmanipulated plots versus those where the farmers modified the plants... Which of the following conclusions are most reasonable to draw from the data presented?",
+            options: [
+                "A) Açai production will help keep the biodiversity of the Amazonian rainforest intact even when farmers manipulate their plots.",
+                "B) Açai production helps alleviate poverty by Amazonian people with small farms.",
+                "C) Açai production does not affect the composition of the forest even when farmers manipulate their plots.",
+                "D) Açai production changes the character of the forest when farmers manipulate their plots."
+            ],
+            answer: 3
+        }
+    ];
+
+    let currentQuestionIndex = 0;
+    const qTitle = document.getElementById('q-title');
+    const qText = document.getElementById('q-text');
+    const optionsContainer = document.getElementById('options-container');
+    const feedbackMsg = document.getElementById('feedback-msg');
+    const prevBtn = document.getElementById('prev-btn');
+    const nextBtn = document.getElementById('next-btn');
+    const menuGrid = document.getElementById('menu-grid');
+    const menuModal = document.getElementById('menu-modal');
+
+    function loadQuestion(index) {
+        currentQuestionIndex = index;
+        const qData = questions[index];
+        qTitle.innerText = `第 ${index + 1} / ${questions.length} 題`;
+        qText.innerText = qData.question;
+        optionsContainer.innerHTML = '';
+        feedbackMsg.style.display = 'none';
+        
+        qData.options.forEach((opt, idx) => {
+            const btn = document.createElement('button');
+            btn.className = 'option-btn';
+            btn.innerText = opt;
+            btn.onclick = () => checkAnswer(idx, qData.answer, btn);
+            optionsContainer.appendChild(btn);
+        });
+
+        prevBtn.disabled = index === 0;
+        nextBtn.disabled = index === questions.length - 1;
+        updateMenuHighlight();
+    }
+
+    function checkAnswer(selectedIdx, correctIdx, btnElement) {
+        const allBtns = optionsContainer.querySelectorAll('.option-btn');
+        allBtns.forEach(btn => btn.disabled = true);
+
+        if (selectedIdx === correctIdx) {
+            btnElement.classList.add('correct');
+            feedbackMsg.innerText = "🎉 答對了！";
+            feedbackMsg.style.backgroundColor = "#d4edda";
+            feedbackMsg.style.color = "#155724";
+        } else {
+            btnElement.classList.add('wrong');
+            allBtns[correctIdx].classList.add('correct');
+            feedbackMsg.innerText = "❌ 答錯了，正確答案是：" + questions[currentQuestionIndex].options[correctIdx];
+            feedbackMsg.style.backgroundColor = "#f8d7da";
+            feedbackMsg.style.color = "#721c24";
+        }
+        feedbackMsg.style.display = 'block';
+    }
+
+    function prevQuestion() { if (currentQuestionIndex > 0) loadQuestion(currentQuestionIndex - 1); }
+    function nextQuestion() { if (currentQuestionIndex < questions.length - 1) loadQuestion(currentQuestionIndex + 1); }
+    function openMenu() { menuModal.style.display = 'flex'; }
+    function closeMenu() { menuModal.style.display = 'none'; }
+    function initMenu() {
+        menuGrid.innerHTML = '';
+        questions.forEach((_, idx) => {
+            const btn = document.createElement('div');
+            btn.className = 'grid-btn';
+            btn.innerText = idx + 1;
+            btn.onclick = () => { loadQuestion(idx); closeMenu(); };
+            menuGrid.appendChild(btn);
+        });
+    }
+    function updateMenuHighlight() {
+        const btns = menuGrid.querySelectorAll('.grid-btn');
+        btns.forEach((btn, idx) => {
+            if (idx === currentQuestionIndex) btn.classList.add('active');
+            else btn.classList.remove('active');
+        });
+    }
+
+    initMenu();
+    loadQuestion(0);
+</script>
+
+</body>
+</html>
