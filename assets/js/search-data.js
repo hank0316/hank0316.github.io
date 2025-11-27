@@ -283,6 +283,17 @@ ninja.data = [{
             window.location.href = "/blog/2022/giscus-comments/";
           
         },
+      },{id: "post-displaying-external-posts-on-your-al-folio-blog",
+        
+          title: 'Displaying External Posts on Your al-folio Blog <svg width="1.2rem" height="1.2rem" top=".5rem" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><path d="M17 13.5v6H5v-12h6m3-3h6v6m0-6-9 9" class="icon_svg-stroke" stroke="#999" stroke-width="1.5" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"></path></svg>',
+        
+        description: "",
+        section: "Posts",
+        handler: () => {
+          
+            window.open("https://medium.com/@al-folio/displaying-external-posts-on-your-al-folio-blog-b60a1d241a0a?source=rss-17feae71c3c4------2", "_blank");
+          
+        },
       },{id: "post-a-post-with-redirect",
         
           title: "a post with redirect",
@@ -387,16 +398,17 @@ ninja.data = [{
           description: "",
           section: "Books",handler: () => {
               window.location.href = "/books/the_godfather/";
-            },},{id: "news-a-simple-inline-announcement",
-          title: 'A simple inline announcement.',
+            },},{id: "news-our-preprint-peft-for-speech-unveiling-optimal-placement-merging-strategies-and-ensemble-techniques-is-out-update-02-2024-the-paper-is-accepted-to-icassp-2024-sasb-workshop",
+          title: 'Our preprint PEFT for Speech: Unveiling Optimal Placement, Merging Strategies, and Ensemble Techniques...',
           description: "",
-          section: "News",},{id: "news-a-long-announcement-with-details",
-          title: 'A long announcement with details',
+          section: "News",},{id: "news-our-preprint-dogerm-equipping-reward-models-with-domain-knowledge-through-model-merging-is-out-we-show-that-scalar-reward-models-can-be-merged-with-intruction-tuned-llms-to-derive-domain-specific-reward-models-w-o-training-update-at-2024-09-21-the-paper-is-accepted-to-emnlp-2024-main",
+          title: 'Our preprint DogeRM: Equipping Reward Models with Domain Knowledge through Model Merging is...',
           description: "",
-          section: "News",handler: () => {
-              window.location.href = "/news/announcement_2/";
-            },},{id: "news-a-simple-inline-announcement-with-markdown-emoji-sparkles-smile",
-          title: 'A simple inline announcement with Markdown emoji! :sparkles: :smile:',
+          section: "News",},{id: "news-our-new-preprint-transferring-textual-preferences-to-vision-language-understanding-through-model-merging-is-out-we-show-that-text-scalar-rms-can-be-merged-into-vision-llms-to-build-vl-rms-update-05-2025-the-paper-is-accepted-to-acl-2025-main",
+          title: 'Our new preprint Transferring Textual Preferences to Vision-Language Understanding through Model Merging is...',
+          description: "",
+          section: "News",},{id: "news-excited-to-share-that-i-have-joined-prof-yu-meng-s-group-as-a-visiting-research-intern-and-i-m-grateful-for-the-opportunity-to-work-with-the-team",
+          title: 'Excited to share that I have joined Prof. Yu Meng’s group as a...',
           description: "",
           section: "News",},{id: "projects-project-1",
           title: 'project 1',
