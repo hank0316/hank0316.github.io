@@ -394,7 +394,7 @@ ninja.data = [{
             },},{id: "news-our-preprint-peft-for-speech-unveiling-optimal-placement-merging-strategies-and-ensemble-techniques-is-out-update-02-2024-the-paper-is-accepted-to-icassp-2024-sasb-workshop",
           title: 'Our preprint PEFT for Speech: Unveiling Optimal Placement, Merging Strategies, and Ensemble Techniques...',
           description: "",
-          section: "News",},{id: "news-our-preprint-dogerm-equipping-reward-models-with-domain-knowledge-through-model-merging-is-out-we-show-that-scalar-reward-models-can-be-merged-with-intruction-tuned-llms-to-derive-domain-specific-reward-models-w-o-training-update-at-2024-09-21-the-paper-is-accepted-to-emnlp-2024-main",
+          section: "News",},{id: "news-our-preprint-dogerm-equipping-reward-models-with-domain-knowledge-through-model-merging-is-out-we-show-that-scalar-reward-models-can-be-merged-with-intruction-tuned-llms-to-derive-domain-specific-reward-models-w-o-training-update-09-2024-the-paper-is-accepted-to-emnlp-2024-main",
           title: 'Our preprint DogeRM: Equipping Reward Models with Domain Knowledge through Model Merging is...',
           description: "",
           section: "News",},{id: "news-our-new-preprint-transferring-textual-preferences-to-vision-language-understanding-through-model-merging-is-out-we-show-that-text-scalar-rms-can-be-merged-into-vision-llms-to-build-vl-rms-update-05-2025-the-paper-is-accepted-to-acl-2025-main",
