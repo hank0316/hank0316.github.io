@@ -1,6 +1,17 @@
 ---
 ---
 
+@article{lin2025adasearch,
+  title={AdaSearch: Balancing Parametric Knowledge and Search in Large Language Models via Reinforcement Learning}, 
+  author={Tzu-Han Lin and Wei-Lin Chen and Chen-An Li and Hung-yi Lee and Yun-Nung Chen and Yu Meng},
+  journal={arXiv preprint arXiv:2512.16883},
+  year={2025},
+  abstract={Equipping large language models (LLMs) with search engines via reinforcement learning (RL) has emerged as an effective approach for building search agents. However, overreliance on search introduces unnecessary cost and risks exposure to noisy or malicious content, while relying solely on parametric knowledge risks hallucination. The central challenge is to develop agents that adaptively balance parametric knowledge with external search, invoking search only when necessary. Prior work mitigates search overuse by shaping rewards around the number of tool calls. However, these penalties require substantial reward engineering, provide ambiguous credit assignment, and can be exploited by agents that superficially reduce calls. Moreover, evaluating performance solely through call counts conflates necessary and unnecessary search, obscuring the measurement of true adaptive behavior. To address these limitations, we first quantify the self-knowledge awareness of existing search agents via an F1-based decision metric, revealing that methods such as Search-R1 often overlook readily available parametric knowledge. Motivated by these findings, we propose AdaSearch, a simple two-stage, outcome-driven RL framework that disentangles problem solving from the decision of whether to invoke search, and makes this decision process explicit and interpretable. This transparency is crucial for high-stakes domains such as finance and medical question answering, yet is largely neglected by prior approaches. Experiments across multiple model families and sizes demonstrate that AdaSearch substantially improves knowledge-boundary awareness, reduces unnecessary search calls, preserves strong task performance, and offers more transparent, interpretable decision behaviors.},
+  code={https://github.com/hank0316/AdaSearch},
+  pdf={https://arxiv.org/pdf/2512.16883},
+  selected={true}
+}
+
 @article{li2025silence,
   title={When Silence Matters: The Impact of Irrelevant Audio on Text Reasoning in Large Audio-Language Models},
   author={Li, Chen-An and Lin, Tzu-Han and Lee, Hung-yi},
