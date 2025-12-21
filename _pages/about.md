@@ -6,7 +6,7 @@ subtitle:
 
 profile:
   align: right
-  image: prof_pic.png
+  image: prof_pic.jpg
   image_circular: false # crops the image to make it circular
   more_info: >
 
@@ -30,16 +30,18 @@ Visiting Research Intern @ [University of Virginia](https://www.virginia.edu/)
 
 I am an M.S. student at the Graduate Institute of Networking and Multimedia, National Taiwan University, fortunate to be advised by [Prof. Yun-Nung (Vivian) Chen](https://www.csie.ntu.edu.tw/~yvchen/). I am also currently a visiting research intern at the University of Virginia, advised by [Prof. Yu Meng](https://yumeng5.github.io/).
 
+I received my bachelor’s degree from National Taiwan University, during which I worked with [Prof. Hung-yi Lee](https://speech.ee.ntu.edu.tw/~hylee/index.php) and [Prof. Yun-Nung (Vivian) Chen](https://www.csie.ntu.edu.tw/~yvchen/).
+
 **Research Focus:** My research centers on natural language processing, particularly Large Language Models (LLMs). I am interested in developing LLMs and agents that are **resource-efficient** and **reliable**.
 
 Nowadays, I think about:
-1. Language Agents: 
-    - Beyond task completion, how can we make the decision-making process of long-horizon agents more interpretable and faithful to users?
-    - How can we control or reduce unnecessary search and retrieval calls in long-horizon search agents (e.g., DeepResearch-style agents)? How should we quantify and balance the trade-off between reasoning and search?
-2. Self-Improving/Self-Evolving AI Systems:
-    - What are the necessary conditions for an AI system to reliably self-improve?
-    - How can we ensure that such systems remain aligned with human values as they improve beyond the level at which humans can easily provide supervision?
-    - How can we efficiently verify the progress of these systems on tasks that require long time horizons and are difficult to evaluate (e.g., scientific research agents)?
+1. **Language Agents**: 
+    - **Trustworthiness**: Beyond task completion, how can we make the behavior of agents more interpretable and faithful to users? 
+    - **Efficiency**: How can we control or reduce unnecessary search calls in long-horizon search agents (e.g., DeepResearch agents)? How should we quantify and balance the trade-off between reasoning and search?
+2. **Self-Improving/Self-Evolving AI Systems**:
+    - **Conditions for Autonomous Improvement**: What are the necessary conditions for an AI system to reliably and sustainably self-improve?
+    - **Alignment**: How can we ensure that self-improving systems remain aligned with human values as they surpass the level at which humans can easily provide direct supervision?
+    - **Verification and Evaluation at Scale**: How can we efficiently verify and evaluate progress on long-horizon, open-ended tasks that are inherently difficult to assess (e.g., scientific research agents)?
 
 **Misc:**
 When I am not doing research, I like to listen to different genre of musics, especially Blues, Rock, and Grunge.
