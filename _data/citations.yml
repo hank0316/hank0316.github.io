@@ -1,8 +1,8 @@
 metadata:
-  last_updated: '2025-12-10'
+  last_updated: '2026-02-04'
 papers:
   GBkoKhAAAAAJ:2osOgNQ5qMEC:
-    citations: 10
+    citations: 12
     title: 'Editing the Mind of Giants: An In-Depth Exploration of Pitfalls of Knowledge Editing in Large Language Models'
     year: '2024'
   GBkoKhAAAAAJ:9yKSN-GCB0IC:
@@ -10,15 +10,15 @@ papers:
     title: 'PEFT for Speech: Unveiling Optimal Placement, Merging Strategies, and Ensemble Techniques'
     year: '2024'
   GBkoKhAAAAAJ:IjCSPb-OGe4C:
-    citations: 0
-    title: 'When Silence Matters: The Impact of Irrelevant Audio on Text Reasoning in Large Audio-Language Models'
+    citations: 2
+    title: 'When silence matters: The impact of irrelevant audio on text reasoning in large audio-language models'
     year: '2025'
   GBkoKhAAAAAJ:UeHWp8X0CEIC:
     citations: 2
     title: Transferring Textual Preferences to Vision-Language Understanding through Model Merging
     year: '2025'
   GBkoKhAAAAAJ:d1gkVwhDpl0C:
-    citations: 69
+    citations: 76
     title: On the utility of self-supervised models for prosody-related tasks
     year: '2023'
   GBkoKhAAAAAJ:qjMakFHDy7sC:
@@ -29,3 +29,7 @@ papers:
     citations: 15
     title: The efficacy of self-supervised speech models for audio representations
     year: '2022'
+  GBkoKhAAAAAJ:zYLM7Y9cAGgC:
+    citations: 0
+    title: 'AdaSearch: Balancing Parametric Knowledge and Search in Large Language Models via Reinforcement Learning'
+    year: '2025'
