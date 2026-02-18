@@ -1,5 +1,5 @@
 metadata:
-  last_updated: '2026-02-04'
+  last_updated: '2026-02-18'
 papers:
   GBkoKhAAAAAJ:2osOgNQ5qMEC:
     citations: 12
@@ -18,7 +18,7 @@ papers:
     title: Transferring Textual Preferences to Vision-Language Understanding through Model Merging
     year: '2025'
   GBkoKhAAAAAJ:d1gkVwhDpl0C:
-    citations: 76
+    citations: 75
     title: On the utility of self-supervised models for prosody-related tasks
     year: '2023'
   GBkoKhAAAAAJ:qjMakFHDy7sC:
@@ -26,7 +26,7 @@ papers:
     title: 'DogeRM: Equipping Reward Models with Domain Knowledge through Model Merging'
     year: '2024'
   GBkoKhAAAAAJ:u5HHmVD_uO8C:
-    citations: 15
+    citations: 17
     title: The efficacy of self-supervised speech models for audio representations
     year: '2022'
   GBkoKhAAAAAJ:zYLM7Y9cAGgC:
