@@ -1,16 +1,16 @@
 metadata:
-  last_updated: '2026-02-23'
+  last_updated: '2026-03-20'
 papers:
   GBkoKhAAAAAJ:2osOgNQ5qMEC:
-    citations: 12
+    citations: 13
     title: 'Editing the Mind of Giants: An In-Depth Exploration of Pitfalls of Knowledge Editing in Large Language Models'
     year: '2024'
   GBkoKhAAAAAJ:9yKSN-GCB0IC:
-    citations: 13
+    citations: 14
     title: 'PEFT for Speech: Unveiling Optimal Placement, Merging Strategies, and Ensemble Techniques'
     year: '2024'
   GBkoKhAAAAAJ:IjCSPb-OGe4C:
-    citations: 2
+    citations: 4
     title: 'When silence matters: The impact of irrelevant audio on text reasoning in large audio-language models'
     year: '2025'
   GBkoKhAAAAAJ:UeHWp8X0CEIC:
