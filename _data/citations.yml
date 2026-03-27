@@ -1,12 +1,12 @@
 metadata:
-  last_updated: '2026-03-20'
+  last_updated: '2026-03-27'
 papers:
   GBkoKhAAAAAJ:2osOgNQ5qMEC:
     citations: 13
     title: 'Editing the Mind of Giants: An In-Depth Exploration of Pitfalls of Knowledge Editing in Large Language Models'
     year: '2024'
   GBkoKhAAAAAJ:9yKSN-GCB0IC:
-    citations: 14
+    citations: 16
     title: 'PEFT for Speech: Unveiling Optimal Placement, Merging Strategies, and Ensemble Techniques'
     year: '2024'
   GBkoKhAAAAAJ:IjCSPb-OGe4C:
@@ -18,7 +18,7 @@ papers:
     title: Transferring Textual Preferences to Vision-Language Understanding through Model Merging
     year: '2025'
   GBkoKhAAAAAJ:d1gkVwhDpl0C:
-    citations: 75
+    citations: 76
     title: On the utility of self-supervised models for prosody-related tasks
     year: '2023'
   GBkoKhAAAAAJ:qjMakFHDy7sC:
