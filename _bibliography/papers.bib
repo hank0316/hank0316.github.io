@@ -1,23 +1,26 @@
 ---
 ---
 
-@article{lin2025adasearch,
+@inproceedings{lin2025adasearch,
   title={AdaSearch: Balancing Parametric Knowledge and Search in Large Language Models via Reinforcement Learning}, 
   author={Tzu-Han Lin and Wei-Lin Chen and Chen-An Li and Hung-yi Lee and Yun-Nung Chen and Yu Meng},
-  journal={arXiv preprint arXiv:2512.16883},
-  year={2025},
-  abstract={Equipping large language models (LLMs) with search engines via reinforcement learning (RL) has emerged as an effective approach for building search agents. However, overreliance on search introduces unnecessary cost and risks exposure to noisy or malicious content, while relying solely on parametric knowledge risks hallucination. The central challenge is to develop agents that adaptively balance parametric knowledge with external search, invoking search only when necessary. Prior work mitigates search overuse by shaping rewards around the number of tool calls. However, these penalties require substantial reward engineering, provide ambiguous credit assignment, and can be exploited by agents that superficially reduce calls. Moreover, evaluating performance solely through call counts conflates necessary and unnecessary search, obscuring the measurement of true adaptive behavior. To address these limitations, we first quantify the self-knowledge awareness of existing search agents via an F1-based decision metric, revealing that methods such as Search-R1 often overlook readily available parametric knowledge. Motivated by these findings, we propose AdaSearch, a simple two-stage, outcome-driven RL framework that disentangles problem solving from the decision of whether to invoke search, and makes this decision process explicit and interpretable. This transparency is crucial for high-stakes domains such as finance and medical question answering, yet is largely neglected by prior approaches. Experiments across multiple model families and sizes demonstrate that AdaSearch substantially improves knowledge-boundary awareness, reduces unnecessary search calls, preserves strong task performance, and offers more transparent, interpretable decision behaviors.},
+  booktitle={The 2026 Conference on Empirical Methods in Natural Language Processing},
+  year={2026},
+  abstract={Equipping large language models (LLMs) with search engines via reinforcement learning (RL) promises effective search agents. However, adaptively balancing internal parametric knowledge with external search remains a challenge, as overreliance on search introduces unnecessary cost and risks exposure to noisy or malicious content, while relying solely on parametric knowledge risks hallucination. Prior efforts mitigate search overuse through tool-call reward shaping, which requires heavy reward engineering and conflates necessary and unnecessary search. To address these limitations, we revisit the evaluation of search agents through an F1-based decision metric, revealing that prior methods often overlook readily available parametric knowledge. Motivated by this, we propose AdaSearch, a simple two-stage, outcome-driven RL framework that disentangles problem-solving from the decision to search, making the decision process explicit and interpretable. Extensive experiments demonstrate that AdaSearch significantly improves search invocation decision-making and reduces unnecessary search calls while preserving strong task performance.},
   code={https://github.com/hank0316/AdaSearch},
   pdf={https://arxiv.org/pdf/2512.16883},
   selected={true}
 }
 
-@article{li2025silence,
+@inproceedings{li2025silence,
   title={When Silence Matters: The Impact of Irrelevant Audio on Text Reasoning in Large Audio-Language Models},
   author={Li, Chen-An and Lin, Tzu-Han and Lee, Hung-yi},
-  journal={arXiv preprint arXiv:2510.00626},
-  year={2025},
-  abstract={Large audio-language models (LALMs) unify speech and text processing, but their robustness in noisy real-world settings remains underexplored. We investigate how irrelevant audio, such as silence, synthetic noise, and environmental sounds, affects text reasoning tasks where audio is unnecessary. Across three text-based benchmarks, we find that even non-informative audio reduces accuracy and increases prediction volatility; the severity of interference scales with longer durations, higher amplitudes, and elevated decoding temperatures. Silence, often assumed neutral, destabilizes outputs as strongly as synthetic noise. While larger models show greater resilience, vulnerabilities persist across all evaluated systems. We further test mitigation strategies and find that prompting shows limited effectiveness, whereas self-consistency improves stability at the cost of increased computation. Our results reveal cross-modal interference as a key robustness challenge and highlight the need for efficient fusion strategies that preserve reasoning performance in the presence of irrelevant inputs.},
+  booktitle={ICASSP 2026 - 2026 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)}, 
+  year={2026},
+  volume={},
+  number={},
+  pages={17757-17761},
+  abstract={Large audio-language models (LALMs) unify speech and text processing, but their robustness in noisy real-world settings remains underexplored. We investigate how irrelevant audio, such as silence, synthetic noise, and environmental sounds, affects text reasoning tasks where audio is unnecessary. Across three text-based benchmarks, we find that even non-informative audio reduces accuracy and increases prediction volatility; the severity of interference scales with longer durations, higher amplitudes, and elevated decoding temperatures. Silence, often assumed neutral, destabilizes outputs as strongly as synthetic noise. While larger models show greater resilience, vulnerabilities persist across all evaluated systems. We further test mitigation strategies and find that prompting shows limited effectiveness, whereas self-consistency improves stability at the cost of increased computation. Our results reveal cross-modal interference as a key robustness challenge and highlight the need for efficient fusion strategies that preserve reasoning performance in the presence of irrelevant inputs. The code and data are publicly available at https://github.com/lca0503/AudioInterference.},
   code={https://github.com/lca0503/AudioInterference.},
   pdf={https://arxiv.org/pdf/2510.00626}
 }

@@ -24,20 +24,20 @@ latest_posts:
   limit: 3 # leave blank to include all the blog posts
 ---
 
-MS Student @ [National Taiwan University](https://www.ntu.edu.tw/english/)  
-Visiting Research Intern @ [University of Virginia](https://www.virginia.edu/)  
-**<font color="#f00">Seeking PhD positions for Fall 2026!</font>**
+Incoming Ph.D. student @ [UCLA](https://www.ucla.edu/)
 
-I am an M.S. student at the Graduate Institute of Networking and Multimedia, National Taiwan University, fortunate to be advised by [Prof. Yun-Nung (Vivian) Chen](https://www.csie.ntu.edu.tw/~yvchen/). I am also currently a visiting research intern at the University of Virginia, advised by [Prof. Yu Meng](https://yumeng5.github.io/).
+I am an incoming Ph.D. student in Computer Science at UCLA, where I am fortunate to be advised by [Prof. Kai-Wei Chang](https://web.cs.ucla.edu/~kwchang/).
 
-I received my bachelor’s degree from National Taiwan University, during which I worked with [Prof. Hung-yi Lee](https://speech.ee.ntu.edu.tw/~hylee/index.php) and [Prof. Yun-Nung (Vivian) Chen](https://www.csie.ntu.edu.tw/~yvchen/).
+Previously, I received my M.S. degree from the Graduate Institute of Networking and Multimedia at National Taiwan University, where I was advised by [Prof. Yun-Nung (Vivian) Chen](https://www.csie.ntu.edu.tw/~yvchen/). I was also a visiting research intern at the University of Virginia, where I worked with [Prof. Yu Meng](https://yumeng5.github.io/).
+
+I received my bachelor’s degree from National Taiwan University. During my undergraduate studies, I worked with [Prof. Hung-yi Lee](https://speech.ee.ntu.edu.tw/~hylee/index.php) and Prof. Yun-Nung (Vivian) Chen on speech processing and natural language processing.
 
 **Research Focus:** My research centers on natural language processing, particularly Large Language Models (LLMs). I am interested in developing LLMs and agents that are **resource-efficient** and **reliable**.
 
 Nowadays, I think about:
 1. **Language Agents**: 
     - **Trustworthiness**: Beyond task completion, how can we make the behavior of agents more interpretable and faithful to users? 
-    - **Efficiency**: How can we control or reduce unnecessary search calls in long-horizon search agents (e.g., DeepResearch agents)? How should we quantify and balance the trade-off between reasoning and search?
+    - **Efficiency**: How can we control or reduce unnecessary actions in agents? How should we quantify and balance the trade-off between reasoning and action?
 2. **Self-Improving/Self-Evolving AI Systems**:
     - **Conditions for Autonomous Improvement**: What are the necessary conditions for an AI system to reliably and sustainably self-improve?
     - **Alignment**: How can we ensure that self-improving systems remain aligned with human values as they surpass the level at which humans can easily provide direct supervision?
