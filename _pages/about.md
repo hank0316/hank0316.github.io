@@ -24,9 +24,9 @@ latest_posts:
   limit: 3 # leave blank to include all the blog posts
 ---
 
-Incoming Ph.D. student @ [UCLA](https://www.ucla.edu/)
+Ph.D. student @ [UCLA](https://www.ucla.edu/)
 
-I am an incoming Ph.D. student in Computer Science at UCLA, where I am fortunate to be advised by [Prof. Kai-Wei Chang](https://web.cs.ucla.edu/~kwchang/).
+I am a first-year Ph.D. student in Computer Science at UCLA, where I am fortunate to be advised by [Prof. Kai-Wei Chang](https://web.cs.ucla.edu/~kwchang/).
 
 Previously, I received my M.S. degree from the Graduate Institute of Networking and Multimedia at National Taiwan University, where I was advised by [Prof. Yun-Nung (Vivian) Chen](https://www.csie.ntu.edu.tw/~yvchen/). I was also a visiting research intern at the University of Virginia, where I worked with [Prof. Yu Meng](https://yumeng5.github.io/).
 
@@ -45,7 +45,7 @@ Nowadays, I think about:
 
 **Misc:**
 When I am not doing research, I like to listen to different genre of musics, especially Blues, Rock, and Grunge.
-I'm a huge fan of John Mayer and I love to play eletric guitars!
+I'm a huge fan of [John Mayer](https://youtu.be/32GZ3suxRn4?si=TN5NURgGQVw3Kk-Y) and I love to play eletric guitars!
 
 <!-- Write your biography here. Tell the world about yourself. Link to your favorite [subreddit](http://reddit.com). You can put a picture in, too. The code is already in, just name your picture `prof_pic.jpg` and put it in the `img/` folder.
 
