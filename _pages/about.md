@@ -9,9 +9,12 @@ profile:
   image: prof_pic.jpg
   image_circular: false # crops the image to make it circular
   more_info: >
+      <p>Engineering VI, Room 368</p>
+      <p>404 Westwood Plaza</p>
+      <p>Los Angeles, CA 90095</p>
 
 selected_papers: true # includes a list of papers marked as "selected={true}"
-social: true # includes social icons at the bottom of the page
+social: false # includes social icons at the bottom of the page
 
 announcements:
   enabled: true # includes a list of news items
@@ -28,24 +31,28 @@ Ph.D. student @ [UCLA](https://www.ucla.edu/)
 
 I am a first-year Ph.D. student in Computer Science at UCLA, where I am fortunate to be advised by [Prof. Kai-Wei Chang](https://web.cs.ucla.edu/~kwchang/).
 
-Previously, I received my M.S. degree from the Graduate Institute of Networking and Multimedia at National Taiwan University, where I was advised by [Prof. Yun-Nung (Vivian) Chen](https://www.csie.ntu.edu.tw/~yvchen/). I was also a visiting research intern at the University of Virginia, where I worked with [Prof. Yu Meng](https://yumeng5.github.io/).
+**Research Focus:** My research centers on Large Language Models (LLMs). I am interested in developing LLMs and agents that are **resource-efficient** and **reliable**. 
+
+Currently, I'm thinking about:
+1. **Language Agents**: 
+    - **Trustworthiness**: How can we make agents more interpretable, reliable, and faithful to users?
+    - **Development**: When should we optimize the agent harness versus the model weights?
+2. **Model Architecture**: 
+    - **Looped LLM**: How should looped LLMs allocate and utilize test-time compute?
+3. **Self-Improving AI**:
+    - **Alignment**: How can we maintain alignment when human supervision is difficult to provide?
+    - **Evaluation at Scale**: How can we efficiently evaluate progress on long-horizon, open-ended tasks, such as scientific research?
+    - **Efficient Discovery**: How can we improve the efficiency of [test-time training](https://arxiv.org/abs/2601.16175) for discovery?
+
+**Collaboration & Mentoring:** I am open to research collaborations and happy to mentor students interested in LLM research. If you are interested in working together or discussing research ideas, feel free to reach out via [email](mailto:tzuhanlin@ucla.edu)!
+
+**Previously**, I received my M.S. degree from the Graduate Institute of Networking and Multimedia at National Taiwan University, where I was advised by [Prof. Yun-Nung (Vivian) Chen](https://www.csie.ntu.edu.tw/~yvchen/). My thesis focused on the efficeincy of search agents and received the ACLCLP Master’s Thesis Award of Excellence. I was also a visiting research intern at the University of Virginia, where I worked with [Prof. Yu Meng](https://yumeng5.github.io/).
 
 I received my bachelor’s degree from National Taiwan University. During my undergraduate studies, I worked with [Prof. Hung-yi Lee](https://speech.ee.ntu.edu.tw/~hylee/index.php) and Prof. Yun-Nung (Vivian) Chen on speech processing and natural language processing.
 
-**Research Focus:** My research centers on natural language processing, particularly Large Language Models (LLMs). I am interested in developing LLMs and agents that are **resource-efficient** and **reliable**.
-
-Nowadays, I think about:
-1. **Language Agents**: 
-    - **Trustworthiness**: Beyond task completion, how can we make the behavior of agents more interpretable and faithful to users? 
-    - **Efficiency**: How can we control or reduce unnecessary actions in agents? How should we quantify and balance the trade-off between reasoning and action?
-2. **Self-Improving/Self-Evolving AI Systems**:
-    - **Conditions for Autonomous Improvement**: What are the necessary conditions for an AI system to reliably and sustainably self-improve?
-    - **Alignment**: How can we ensure that self-improving systems remain aligned with human values as they surpass the level at which humans can easily provide direct supervision?
-    - **Verification and Evaluation at Scale**: How can we efficiently verify and evaluate progress on long-horizon, open-ended tasks that are inherently difficult to assess (e.g., scientific research agents)?
-
 **Misc:**
 When I am not doing research, I like to listen to different genre of musics, especially Blues, Rock, and Grunge.
-I'm a huge fan of [John Mayer](https://youtu.be/32GZ3suxRn4?si=TN5NURgGQVw3Kk-Y) and I love to play eletric guitars!
+I'm a huge fan of [John Mayer](https://youtu.be/32GZ3suxRn4?si=TN5NURgGQVw3Kk-Y) and I like to play eletric guitars!
 
 <!-- Write your biography here. Tell the world about yourself. Link to your favorite [subreddit](http://reddit.com). You can put a picture in, too. The code is already in, just name your picture `prof_pic.jpg` and put it in the `img/` folder.
 
