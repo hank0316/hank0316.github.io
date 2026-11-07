@@ -33,17 +33,6 @@ I am a first-year Ph.D. student in Computer Science at UCLA, where I am fortunat
 
 **Research Focus:** My research centers on Large Language Models (LLMs). I am interested in developing LLMs and agents that are **resource-efficient** and **reliable**. 
 
-Currently, I'm thinking about:
-1. **Language Agents**: 
-    - **Trustworthiness**: How can we make agents more interpretable, reliable, and faithful to users?
-    - **Development**: When should we optimize the agent harness versus the model weights?
-2. **Model Architecture**: 
-    - **Looped LLM**: How should looped LLMs allocate and utilize test-time compute?
-3. **Self-Improving AI**:
-    - **Alignment**: How can we maintain alignment when human supervision is difficult to provide?
-    - **Evaluation at Scale**: How can we efficiently evaluate progress on long-horizon, open-ended tasks, such as scientific research?
-    - **Efficient Discovery**: How can we improve the efficiency of [test-time training](https://arxiv.org/abs/2601.16175) for discovery?
-
 **Collaboration & Mentoring:** I am open to research collaborations and happy to mentor students interested in LLM research. If you are interested in working together or discussing research ideas, feel free to reach out via [email](mailto:tzuhanlin@ucla.edu)!
 
 **Previously**, I received my M.S. degree from the Graduate Institute of Networking and Multimedia at National Taiwan University, where I was advised by [Prof. Yun-Nung (Vivian) Chen](https://www.csie.ntu.edu.tw/~yvchen/). My thesis focused on the efficeincy of search agents and received the ACLCLP Master’s Thesis Award of Excellence. I was also a visiting research intern at the University of Virginia, where I worked with [Prof. Yu Meng](https://yumeng5.github.io/).
